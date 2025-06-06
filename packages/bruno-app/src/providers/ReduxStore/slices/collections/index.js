@@ -1436,6 +1436,13 @@ export const collectionsSlice = createSlice({
         set(collection, 'root.request.script.res', action.payload.script);
       }
     },
+    updateCollectionHooks: (state, action) => {
+      const collection = findCollectionByUid(state.collections, action.payload.collectionUid);
+
+      if (collection) {
+        set(collection, 'root.request.script.hooks', action.payload.hooks);
+      }
+    },
     updateCollectionTests: (state, action) => {
       const collection = findCollectionByUid(state.collections, action.payload.collectionUid);
 
@@ -2265,6 +2272,7 @@ export const {
   updateCollectionAuth,
   updateCollectionRequestScript,
   updateCollectionResponseScript,
+  updateCollectionHooks,
   updateCollectionTests,
   updateCollectionDocs,
   collectionAddFileEvent,
